@@ -1,0 +1,189 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+
+}
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;   
+    width:100%;
+
+}
+.heading{
+    padding:3% 15%;
+    background-color: #f0ede9;
+    border-bottom:1px solid rgb(209, 204, 204);
+}
+
+.heading p{
+    
+    color:rgb(131, 146, 161);
+    font-weight: 600;
+}
+nav ul {
+    display:flex;
+    list-style-type:none;
+    height:8%;
+    padding-left:15%;
+    align-items:center;
+    font-weight: bold;
+    
+}
+
+    nav li{
+        padding-right:30px;
+      
+    }
+    nav li a{
+        text-decoration:none;
+        color:rgb(88, 90, 92);
+    }
+
+    nav a:hover{
+        color:rgb(131, 146, 161);
+    }
+
+.bg {
+    
+    background-image: url(images/office.png);
+    height: 55%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .container{
+    display:flex;
+    padding:5px 15%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom:5%;
+    
+}
+.container p{
+    color:slategrey;
+    font-weight:500;
+}
+
+h2, h3{
+    padding-bottom:20px;
+}
+
+
+.industry, .gallery  {
+  flex-basis:37%;
+  padding-top:5%;
+  padding-bottom:2%;
+  
+}
+.practical, .logotypes {
+    flex-basis:53%;    
+    padding-top:5%;
+  padding-bottom:2%;
+  align-content: flex-end;
+} 
+
+.logotypes ul{
+  list-style-type: none;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: space-between;
+
+}
+.logotypes ul li{
+width: 25%;
+padding:25px 25px 25px 0;
+}
+footer {
+  
+  background-color:#9e56f0;
+  font-weight: bold;
+  color:white;
+  display:flex;
+  padding:2% 15%;
+  justify-content:space-between;
+  
+}
+
+
+footer li{
+  list-style-type: none;
+  line-height:3em;
+
+}
+
+@media only screen and (max-width: 400px) {
+    body   {
+            font-size: .7em;    
+        }
+        h1{
+            font-size:1.5em;
+        }
+        h2{
+            font-size: 1.2em;
+        }
+        
+    
+       nav ul{
+           height:14%;
+           display:flex;
+            flex-wrap:nowrap;
+            flex-direction: column;
+            justify-content:center;
+           padding-left:15%;
+            flex-basis: 45%;
+            
+       }
+       nav li{
+           align-self:flex-start;
+           padding-left: 0;
+       }
+       .container{
+           display:flex;
+           flex-wrap:wrap;
+           width:100%;
+       }
+       .industry, .practical, .gallery, .logotypes{
+           flex-basis:90%;
+       }
+       .industry{
+           order:2;
+       }
+       .practical{
+           order:1;
+    
+       }
+       .gallery{
+           order:3;
+       }
+       .logotypes{
+           order:4;
+        
+       }
+       .logotypes ul{
+           display:grid;
+           grid-template-columns: 1fr 1fr;
+           column-gap: 20px;    
+           padding-left:40px;
+           
+       }
+      footer{
+          display:flex;
+          flex-wrap:wrap;
+          width:100%;
+    
+      }
+    footer ul{
+        width:90%;
+    }
+    
+    .map, .about, .archives:not(:first-child){
+        font-weight: 300;
+    }
+    
+    .bg{
+        background-position: right;
+    }
+    
+    footer ul:last-child{
+        display:none;
+    }
