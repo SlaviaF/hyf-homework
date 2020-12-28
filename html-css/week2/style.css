@@ -111,7 +111,7 @@ footer li{
 
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 600px) {
     body   {
             font-size: .7em;    
         }
@@ -187,3 +187,4 @@ footer li{
     footer ul:last-child{
         display:none;
     }
+}
