@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 3 Homework Page</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="navbar">
+        <h1>LOGO</h1>
+        <nav>
+            <ul>
+                <li>Log in </li>
+                <li>Favorites</li>
+                <li>Shopping</li>
+            </ul>
+        </nav>
+    </div>
+    <main>
+        <div class="signup-width">
+            <h1> Sign up to yourcustomtailor.com </h1>
+            <p>We can't wait to help you improve your life-style and gain the attention from people around you!</p>
+            <p>Sign up below to save up to 70% on apparel, handbags and cosmetics. Our agents are busy picking the best offers that match your
+                preferences
+                and style. Every week we will send you a hand-picked selection - we just need to know a few details about you first... </p>
+        </div>
+
+        <h2 class="know-customer">Step 1/3 - tell us who you are?</h2>
+
+        <h3>Progress</h3>
+
+        <div class="progress-bar hover-bar ">
+
+
+        </div>
+        <p class="bold">Nice to meet you. Let´s spend a minute to get to know each other? Please enter the following:</p>
+
+
+        <form action="index2.html" method="GET">
+
+            <div class="container">
+                <div class="row">
+                    <div class>
+                        <label for="fname">First name*</label>
+                        <input type="text" name="fname" id="fname" required>
+                    </div>
+                    <div>
+                        <label for="lname">Last name*</label>
+                        <input type="text" name="lname" id="lname" required>
+                    </div>
+                </div>
+                <div>
+
+                    <label for="country">Country*</label>
+                    <select name="country" id="country" required>
+                        <option value="">Select Country</option>
+                        <option value="dk">Denmark</option>
+                        <option value="se">Sweden</option>
+                        <option value="no">Norway</option>
+                        <option value="de">Germnay</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <div>
+                        <label class="address-padding" for="st-address">Street address*</label>
+                        <input type="text" name="st-address" id="st-address" required>
+                    </div>
+
+
+
+                    <div>
+                        <label for="pcode">Post code*</label>
+                        <input type="text" name="pcode" id="pcode" required minlength="4" maxlength="4">
+                    </div>
+                </div>
+
+                <div>
+
+                    <label class="description" for="profile">Profile description <br>
+                        <span class="description-para">Please provide a short description of yourself to be displayed
+                            on our
+                            social community pages.</span>
+                    </label>
+
+                    <textarea name="profile" id="profile" cols="25" rows="6"></textarea>
+
+                </div>
+            </div>
+
+            <p class="para-line">Use the same address for billing and shipping? Uncheck below to fill out a seperate shipping address.
+            </p>
+
+
+            <label for="address-checkbox">Shipping address </label>
+            <input type="checkbox" name="address-checkbox" id="address-checkbox" checked>
+            <div class="hide">
+                <div>
+                    <label for="alt-address">Shipping address</label>
+                    <input type="text" name="alt-address" id="alt-address">
+                </div>
+                <div>
+
+                    <label for="alt-pcode">Post code</label>
+                    <input type="text" name="alt-pcode" id="alt-pcode" minlength="4" maxlength="4">
+
+                </div>
+            </div>
+            <div class="lct-button">
+
+                <button type="submit">Next</button>
+            </div>
+
+        </form>
+
+    </main>
+
+</body>
+
+</html>
