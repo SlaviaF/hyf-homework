@@ -131,6 +131,7 @@ input, #country{
 
   #country{
       width:12.2em;
+    
   }  
 
 #profile{
@@ -196,7 +197,7 @@ input, #country{
     width:65%;
     padding:2% 5%;
     
-}
+}/*
 .container{
     display:inline-flex;
     flex-direction:column;
@@ -217,8 +218,11 @@ input, #country{
     height:11.8em;
     justify-content:space-between
     
-  }
+  }*/
 
+.country-label{
+    padding-left: 11.5em;
+}
 
 #address-checkbox{
     margin-top:1%;
@@ -227,9 +231,13 @@ input, #country{
     width:45%;
     
 }
+.description{
+    margin-left:10em;
+}
 
-
-
+.password-margin{
+    margin-left:9.5em;
+}
 
 
 input, #country{
@@ -238,9 +246,11 @@ width:11em;
     margin-left:2em;
      height:2em;
 }
+
 #profile{
    width:50%;
    height:11em;
+   margin-left:4em;
 
 }
 .row{
