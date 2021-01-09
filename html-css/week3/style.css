@@ -197,28 +197,10 @@ input, #country{
     width:65%;
     padding:2% 5%;
     
-}/*
-.container{
-    display:inline-flex;
-    flex-direction:column;
-   
-    width:45%;
-    height:auto;
-    line-height:2em;
-    
-  }
-
-
-
-  .container2{
-    display:inline-flex;
-   
-    flex-direction:column;
-    width:45%;
-    height:11.8em;
-    justify-content:space-between
-    
-  }*/
+}
+.shipping-margin{
+    margin-left:9em;
+}
 
 .country-label{
     padding-left: 11.5em;
@@ -226,6 +208,7 @@ input, #country{
 
 #address-checkbox{
     margin-top:1%;
+    
 }
 .row input{
     width:45%;
@@ -237,6 +220,7 @@ input, #country{
 
 .password-margin{
     margin-left:9.5em;
+    margin-top: 1em;
 }
 
 
