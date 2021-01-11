@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 red
 yellow
 purple
+=======
+red green
+yellow
+>>>>>>> 30825873366b9907edcb12b700eecb2361f46611
