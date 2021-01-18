@@ -41,6 +41,3 @@ let secondWords = ["Solution", "IT", "Tech", "Skills", "Web", "Ideas", "Informat
 let startupName = firstWords[Math.floor(Math.random() * 10) + 0] + secondWords[Math.floor(Math.random() * 10) + 0];
 
 console.log('The startup: "', startupName, '" contains', startupName.length, 'characters');
-
-
-document.write("My house");
