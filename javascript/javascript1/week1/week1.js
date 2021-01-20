@@ -38,6 +38,7 @@ if (houseCost > housePrice) {
 
 let firstWords = ["Awe-spiring", "Easy", "Quick", "Awesome", "Next", "Smart", "Innovative", "Cubic", "Cryptic", "Aspire"];
 let secondWords = ["Solution", "IT", "Tech", "Skills", "Web", "Ideas", "Information", "Software", "Data", "Systems"];
-let startupName = firstWords[Math.floor(Math.random() * 10) + 0] + secondWords[Math.floor(Math.random() * 10) + 0];
+const randomNumber = Math.floor(Math.random() * 10) + 0;
+let startupName = firstWords[randomNumber] + secondWords[randomNumber];
 
 console.log('The startup: "', startupName, '" contains', startupName.length, 'characters');
