@@ -26,10 +26,11 @@ function canBuyMoreCandy() {
 
     }
     if (totalPriceOfCandy > amountToSpend) {
-        console.log('You can buy more, so please do!')
+        console.log('Enough candy for you!')
     }
     else {
-        console.log('Enough candy for you!')
+
+        console.log('You can buy more, so please do!')
     }
 
 }
