@@ -3,9 +3,10 @@ const notes = [];
 
 
 function saveNote(content, id) {
-    const addNotes = { content: content, id: id }
-    notes.push(addNotes);
+    const note = { content: content, id: id }
+    notes.push(note);
 }
+
 saveNote("Pick up groceries", 1);
 saveNote("Do laundry", 2);
 saveNote("PickUp Kids", 3);
@@ -43,23 +44,5 @@ function logOutNotesFormatted(content, id) {
 }
 logOutNotesFormatted();
 
-
-
-//Additional feature to check if the task has been completd.
-//PENDING NOTES
-
-function displayPendingNotes(id, done = false) {
-    for (i = 0; i < notes.length; i++) {
-        if (done && notes[i].id === id) {
-
-            console.log('Id ' + notes[i].id + ' has been completed');
-            break;
-
-        }
-
-    }
-}
-
-displayPendingNotes(2, true);
 
 
