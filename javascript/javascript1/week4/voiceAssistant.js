@@ -79,7 +79,7 @@ function getReply(command) {
             }
             greeting = result;
         }
-        toCalculate(commandArr[1], '*', commandArr[3]);
+        toCalculate(commandArr[1], operator, commandArr[3]);
     }
 
 
