@@ -1,59 +1,45 @@
 const danishWords = ["bil", "plante", "kaffe", "bog", "ø", "planetarium"];
-const lengthArr = [];
-let min;
-let shortestWord;
 
-function findShortestWord() {
 
-    for (let i = 0; i < danishWords.length; i++) {
-        lengthItem = danishWords[i].length;
-        lengthArr.push(lengthItem);
-        lengthArr.sort((a, b) => a - b)
-        min = lengthArr[0];
-        if (danishWords[i].length == min) {
-
+function getShortestWord() {
+    let shortestWord = danishWords[0].length;
+    for (i = 0; i < danishWords.length; i++) {
+        if (danishWords[i].length < shortestWord) {
             shortestWord = danishWords[i];
         }
-
     }
     return shortestWord;
 }
 
-shortestWord = findShortestWord();
-console.log(shortestWord);
+
+console.log(getShortestWord());
 
 
 
 
-/*Find and count the Danish letters
-Find the individual number and the total number of Danish letters in a string.
 
-const danishString = "Jeg har en blå bil";
-notThisFunctionName(danishString); // returns {total: 1, å: 1}
 
-const danishString2 = "Blå grød med røde bær";
-notThisFunctionName(danishString2); // returns {total: 4, æ: 1, ø: 2, å: 1}*/
+//Find and count the Danish letters
+
 
 const danishLetters = ['å', 'ø', 'æ',]
 const danishString = "Jeg har en blå bil";
 const danishString2 = "Blå grød med røde bær";
 
-function findDanishLetters(string) {
+function getDanishLetters(danishSentence) {
     const resultObj = {};
     let sum = 0;
-    string = string.split('');
-    console.log(string);
-    for (i = 0; i < string.length; i++) {
-        if (danishLetters.includes(string[i])) {
+    danishLetterArray = danishSentence.split('');
+    console.log(danishLetterArray);
+    for (i = 0; i < danishLetterArray.length; i++) {
+        if (danishLetters.includes(danishLetterArray[i])) {
 
-            resultObj[string[i]];
+            if (danishLetterArray[i] in resultObj) {
 
-            if (string[i] in resultObj) {
-
-                resultObj[string[i]] += 1
+                resultObj[danishLetterArray[i]] += 1
 
             } else {
-                resultObj[string[i]] = 1;
+                resultObj[danishLetterArray[i]] = 1;
             }
             sum++
         }
@@ -65,8 +51,8 @@ function findDanishLetters(string) {
 
 }
 
-console.log(findDanishLetters(danishString2));
-console.log(findDanishLetters(danishString));
+console.log(getDanishLetters(danishString2));
+console.log(getDanishLetters(danishString));
 
 
 
@@ -76,27 +62,16 @@ const spiritAnimal = ['The fullmoon Wolf', 'The fierce Lion', 'The Louzy Cat', '
 
 const newBtn = document.querySelector('#getSpiritAnimal')
 let input = document.querySelector('#spirit_animal');
-let randomAnimal = spiritAnimal[Math.floor(Math.random() * spiritAnimal.length)];
-
 let display = document.querySelector('#displayAnimal')
-
-
+let randomAnimal = spiritAnimal[Math.floor(Math.random() * spiritAnimal.length)];
 newBtn.addEventListener('click', function () {
-
-    input = input.value;
-    if (input == null || input == " ") {
+    let randomAnimal = spiritAnimal[Math.floor(Math.random() * spiritAnimal.length)];
+    let enteredInput = input.value;
+    if (enteredInput === "") {
         display.innerHTML = `Please enter your name`;
     } else {
-        display.innerHTML = `${input} : ${input} - ${randomAnimal}`
+        display.innerHTML = `${enteredInput} : ${enteredInput} - ${randomAnimal}`
     }
 })
-
-input.addEventListener('mouseover', function () {
-    window.location.reload();
-})
-
-
-
-
 
 
