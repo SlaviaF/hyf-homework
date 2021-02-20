@@ -42,4 +42,3 @@ function renderProducts(products) {
 }
 renderProducts(products);
 
-
