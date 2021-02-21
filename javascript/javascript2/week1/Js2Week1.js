@@ -16,9 +16,6 @@ console.log(getShortestWord());
 
 
 
-
-
-
 //Find and count the Danish letters
 
 
