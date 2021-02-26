@@ -41,3 +41,4 @@ function renderProducts(products) {
     body.appendChild(unorderedLi);
 }
 renderProducts(products);
+
