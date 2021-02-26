@@ -1,0 +1,84 @@
+body {
+    font-family: "Poppins", sans-serif;
+    /*background-color: #F9FBFD;*/
+    background-image: 
+    linear-gradient(to right, rgba(38, 49, 8, 0.52), rgba(240, 189, 20, 0.73)),
+    url("images/clock.jpg");
+background-position:0vh;
+color:white;
+}
+
+* {
+    box-sizing: border-box;
+    margin:0px;
+}
+
+body {
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    margin-left:0;
+    padding: 0;
+}
+.img_size{
+width: 70px;
+}
+.heading{
+    background-color: white;
+    color:grey;
+    border:1px solid rgb(230, 221, 221);
+    box-sizing: border-box;
+    
+}
+.logo_container {
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+.user_welome_signin{
+    display:flex;
+   
+
+}
+.user_welome_signin li{
+    padding-right:30px;
+    padding-left:30px;
+    
+}
+.nav_bar{
+    background-color: white;
+    border:1px solid rgb(230, 221, 221)
+}
+.nav_list{
+    display:flex;
+    justify-content: flex-end;
+    font-size: 0.9em;
+    height:50px;
+    align-items:center;
+    color:grey;
+    
+}
+.nav_list li{
+padding-left:30px;
+padding-right:30px;
+    
+    
+}
+.search_section{
+    margin:5%;
+}
+.searchContainer{
+ margin-bottom: 3em;
+}
+#searchInput{
+width:30%;
+height:2em;
+}
+
+#maxPrice{
+    width:20%;
+    height:2em;
+}
