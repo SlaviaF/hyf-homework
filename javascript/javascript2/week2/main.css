@@ -4,7 +4,7 @@ body {
     background-image: 
     linear-gradient(to right, rgba(38, 49, 8, 0.52), rgba(240, 189, 20, 0.73)),
     url("images/clock.jpg");
-background-position:0vh;
+    background-position:cover;
 color:white;
 }
 

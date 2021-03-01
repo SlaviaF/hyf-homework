@@ -20,12 +20,6 @@ function renderProducts(products) {
         prices = document.createElement('p');
         ratings = document.createElement('p');
         memberPrice = document.createElement('p')
-        /*btn = document.createElement('button')
-        btn.innerHTML = "Add to Cart"
-        btn.setAttribute("id", "addToCart")*/
-
-
-
         names.innerHTML = element.name;
         prices.innerHTML = `Price : ${element.price}`;
         ratings.innerHTML = `Rating : ${element.rating}`;
@@ -49,27 +43,29 @@ console.log(productList);
 console.log(unorderedLi);
 console.log(productDisplayList);
 
-
-
 searchInput.addEventListener('click', function () {
     this.style.background = "lightgrey";
 
 });
 
-
-
 searchInput.addEventListener('input', searchProducts);
 function searchProducts() {
-
     productDisplayUl = document.getElementsByClassName('productDisplayList');
     value = searchInput.value.toUpperCase();
-    let getProducts = products.filter(product => product.name.toUpperCase().includes(value));
+    if (maxPrice.value && searchInput) {
+        let getProducts = products.filter(product => product.name.toUpperCase().includes(value) && maxPrice.value >
+            product.price);
+        unorderedLi.innerHTML = "";
+        renderProducts(getProducts)
+    } else if (searchInput) {
+        getProducts = products.filter(product => product.name.toUpperCase().includes(value));
+        unorderedLi.innerHTML = "";
+        renderProducts(getProducts);
+    }
     console.log(getProducts);
-    unorderedLi.innerHTML = "";
-    renderProducts(getProducts);
-
+    //unorderedLi.innerHTML = "";
+    //renderProducts(getProducts);
 }
-
 
 maxPrice.addEventListener('input', getProductsWithinMaxPrice);
 
@@ -78,6 +74,7 @@ function getProductsWithinMaxPrice() {
     priceInputValue = priceInput.value;
     let getMaxPrice = products.filter(product => product.price < priceInputValue)
     unorderedLi.innerHTML = "";
+
     renderProducts(getMaxPrice);
 }
 console.log(products);
