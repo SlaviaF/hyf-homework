@@ -53,11 +53,11 @@ function startGame() {
             win.innerHTML = "Congrats Player L";
         }
         if (winnerObj.sPlayer == winnerObj.lPlayer) {
-            win.innerHTML = "Congrats Player L";
+            win.innerHTML = "It's a draw, Try Again";
         }
     }
 }
-
+//WAS UNABLE TO SET THE COUNTDOWN FOR LAST 3 SECONDS, SO DECIDED TO DO IT FOR THE WHOLE TIME
 btn.addEventListener('click', countDown);
 let countDownTime;
 function countDown() {
