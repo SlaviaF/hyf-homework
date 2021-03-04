@@ -57,12 +57,13 @@ function startGame() {
         }
     }
 }
-/*UNABLE TO ADD THE TIMER BEFORE THE END OF THE GAME
+
 btn.addEventListener('click', countDown);
 let countDownTime;
 function countDown() {
     countDownTime = 3;
     const timeLeftDisplay = document.getElementById("timeLeft");
+    timeLeftDisplay.innerText = gameTime.value;
     setInterval(() => {
         if (countDownTime <= 0) {
             clearInterval(countDownTime = 0)
@@ -71,7 +72,7 @@ function countDown() {
         countDownTime -= 1
     }, 1000)
 
-}*/
+}
 
 btn.addEventListener('click', gameComplete)
 winnerObj = { 'sPlayer': 0, 'lPlayer': 0 }
