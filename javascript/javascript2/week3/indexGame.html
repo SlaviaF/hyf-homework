@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1 class="centerAlign">Fastest presser</h1>
+    <div class="centerAlign">
+        <input type="number" id="secondsForGame" placeholder="set seconds">
+        <button id="startButton">Start game!</button>
+        <h4 class="countdown">CountDown:<span id="timeLeft"></span></h4>
+    </div>
+    <h3 id="playerOnLead"></h3>
+    <p id="keySelection"></p>
+    <div class="container">
+        <div class="flex-container">
+            <div class="playerS player">
+                <h1>Player S</h1>
+                <p id="clickCountS"></p>
+            </div>
+
+            <div class="playerL player">
+                <h1>Player L</h1>
+                <p id="clickCountL"></p>
+            </div>
+        </div>
+        <div id="gameOver">
+            <p>GAME OVER</p>
+            <p id="winner"></p>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+
+</html>
