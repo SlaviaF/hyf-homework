@@ -42,17 +42,18 @@ function startGame() {
         if (winnerObj.sPlayer) {
             clickCountS.innerText = winnerObj.sPlayer;
         }
-        if (winnerObj.lPlayer) {
+        else if (winnerObj.lPlayer) {
             clickCountL.innerText = winnerObj.lPlayer;
         }
+
         if (winnerObj.sPlayer > winnerObj.lPlayer) {
             win.innerHTML = "Congrats Player S";
 
         }
-        if (winnerObj.sPlayer < winnerObj.lPlayer) {
+        else if (winnerObj.sPlayer < winnerObj.lPlayer) {
             win.innerHTML = "Congrats Player L";
         }
-        if (winnerObj.sPlayer == winnerObj.lPlayer) {
+        else {
             win.innerHTML = "It's a draw, Try Again";
         }
     }
