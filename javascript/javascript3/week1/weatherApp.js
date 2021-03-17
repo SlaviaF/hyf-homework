@@ -26,6 +26,7 @@ function getCityWeather() {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=ae80d9c115b082960ef280331a3b25f9`)
         .then(response => response.json())
         .then(weatherData => {
+            console.log(weatherData)
             renderWeatherStatus(weatherData)
             localStorage.setItem("userLocation", renderWeatherStatus(weatherData))
 
