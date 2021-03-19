@@ -6,11 +6,11 @@
 const searchGifBtn = document.getElementById("searchGifBtn")
 const gifType = document.getElementById("gifType")
 const noOfGif = document.getElementById("noOfGif")
-
+let displayImages = document.querySelector(".displayImages")
 let searchString;
 let gifNum;
-searchGifBtn.addEventListener("click", getGiphy)
-function getGiphy() {
+searchGifBtn.addEventListener("click", getNumofGif)
+function getNumofGif() {
 
     searchString = gifType.value.trim();
     gifNum = noOfGif.value;
@@ -28,10 +28,11 @@ function getGiphy() {
             console.log(gifData)
             const gifImageData = gifData.map((data) => data.images.downsized.url)
             console.log(gifImageData);
+            displayImages.innerHTML = "";
             gifImageData.forEach(imgUrl => {
                 const img = document.createElement("img")
                 img.src = imgUrl
-                let displayImages = document.querySelector(".displayImages")
+
                 displayImages.appendChild(img)
                 img.style.display = "block"
                 img.style.margin = "20px"

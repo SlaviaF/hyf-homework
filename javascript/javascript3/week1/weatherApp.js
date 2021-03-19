@@ -22,19 +22,36 @@ const message = document.getElementById("message")
 weatherBtn.addEventListener("click", getCityWeather)
 function getCityWeather() {
     let cityName = inputCity.value;
-    infoBox.style.visibility = "visible";
+    if (!cityName) {
+        alert(`Enter a city name`)
+    }
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=ae80d9c115b082960ef280331a3b25f9`)
-        .then(response => response.json())
+
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+
+                throw new Error('Enter valid City Name')
+
+            }
+        })
         .then(weatherData => {
             console.log(weatherData)
             renderWeatherStatus(weatherData)
+            infoBox.style.visibility = "visible";
             localStorage.setItem("userLocation", renderWeatherStatus(weatherData))
 
         })
+        .catch(error => {
+            infoBox.style.visibility = "hidden"
+            alert(error)
+        })
+
 }
 //Get weather from  user location
-currentLctBtn.addEventListener('click', userLocation);
-function userLocation() {
+currentLctBtn.addEventListener('click', getUserLocation);
+function getUserLocation() {
     infoBox.style.visibility = "visible";
     function onSuccess(position) {
         let lat = position.coords.latitude;
