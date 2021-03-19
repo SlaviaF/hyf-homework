@@ -11,18 +11,18 @@ const greenCircle = { x: 400 - parseInt(greenBox.style.left), y: 20 - parseInt(g
 async function translateOneByOne() {
     try {
 
-        const awaitRedBox = await moveElement(redBox, redCircle);
+        await moveElement(redBox, redCircle);
         console.log(`red box moved`)
-        const awaitBlueBox = await moveElement(blueBox, blueCircle);
+        await moveElement(blueBox, blueCircle);
         console.log(`blue box moved`)
-        const awaitGreenBox = await moveElement(greenBox, greenCircle);
+        await moveElement(greenBox, greenCircle);
         console.log(`green box moved`)
     } catch (error) {
         console.log(error.message)
     }
 
 }
-//translateOneByOne();
+translateOneByOne();
 
 //translate all at once
 function translateAllAtOnce() {
@@ -35,4 +35,4 @@ function translateAllAtOnce() {
 }
 
 
-translateAllAtOnce()
+//translateAllAtOnce()
