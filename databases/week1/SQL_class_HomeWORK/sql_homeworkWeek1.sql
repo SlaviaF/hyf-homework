@@ -22,7 +22,7 @@ INNER JOIN status ON status.id=task.status_id
 WHERE status.name!="done";
 
 -- Get all the tasks, sorted with the most recently created first
-SELECT *
+SELECT title, created
 FROM task
 ORDER BY created DESC;
 
@@ -35,7 +35,7 @@ Limit 0, 1;
 -- Get the title and due date of all tasks where the title or description contains database
 SELECT title, due_date
 FROM task
-WHERE description LIKE "%database%" OR title LIKE "%database%";
+WHERE LOWER(description) LIKE "%database%" OR LOWER(title) LIKE "%database%";
 
 -- Get the title and status (as text) of all tasks
 SELECT task.title, status.name
@@ -49,11 +49,11 @@ INNER JOIN status ON status.id=task.status_id
 GROUP BY task.status_id;
 
 -- Get the names of all statuses, sorted by the status with most tasks first
-SELECT task.title, task.created, status.name
-FROM task
-INNER JOIN status ON status.id=task.status_id
-ORDER BY status.name,
-		task.created DESC;
+SELECT status.name, COUNT(status.name) AS count_status
+FROM status
+INNER JOIN task ON status.id=task.status_id
+GROUP BY status.id
+ORDER BY count_status DESC;
 
 		
 
