@@ -2,9 +2,8 @@ const canvas = document.querySelector("canvas");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 const c = canvas.getContext('2d')
-let circles = [];
 let numberOfCircles = 100;
-class Circles {
+class Circle {
     constructor(x, y, r, startAngle, endAngle, fillColor) {
         this.x = x;
         this.y = y;
@@ -24,7 +23,7 @@ class Circles {
 }
 function generateCircles() {
 
-    const circle1 = new Circles(Math.random() * window.innerWidth,
+    const circle1 = new Circle(Math.random() * window.innerWidth,
         Math.random() * window.innerHeight,
         Math.floor(Math.random() * 50),
         0,

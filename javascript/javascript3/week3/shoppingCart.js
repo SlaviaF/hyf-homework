@@ -3,7 +3,9 @@ const productList = document.getElementById("productList");
 const ulList = document.createElement("ul");
 const total = document.createElement('p')
 const currency = document.getElementById('currency')
-const currDisplay = document.getElementById('curr_display')
+let currencyValue;
+let totalProductPrices;
+
 
 class Product {
     constructor(name, price) {
@@ -11,26 +13,26 @@ class Product {
         this.price = price;
     }
     convertToCurrency(currency) {
-
         if (currency == 'USD') {
-            currDisplay.innerHTML = `<p>${currency} - ${(this.price * 0.159045).toFixed(2)} </p > `
-
-
+            return Math.floor(this.price * 0.159045)
         }
+
         else if (currency == 'EUR') {
-            currDisplay.innerHTML = `<p> ${currency} -${(this.price * 0.134476).toFixed(2)} </p > `
+            return Math.floor(this.price * 0.134476)
 
         }
         else if (currency == 'DKK') {
-            currDisplay.innerHTML = `<p> ${currency} - ${this.price} </p > `
+            return this.price
 
         }
     }
+
 }
 
 class ShoppingCart {
     constructor() {
         this.products = [];
+        this.searchValue = "";
     }
 
     addProduct(product) {
@@ -43,34 +45,51 @@ class ShoppingCart {
 
     searchProduct(productName) {
         const findProduct = this.products.filter(product => {
-            ulList.innerHTML = "";//how to refresh the page 
+
             return product.name.toUpperCase().includes(productName.toUpperCase())
         })
-        this.products = findProduct;
-        this.renderProducts()
-        this.getTotal();
+        return findProduct;
 
     }
-    getTotal() {
-        console.log(this.products);
-        const totalProductPrices = this.products.map(product => product.price).reduce((total, price) => total + price, 0)
+    getTotal(totalProducts) {
+
+        totalProductPrices = totalProducts.map(product => product.convertToCurrency(currencyValue)).reduce((total, price) => total + price, 0)
+        console.log(currencyValue);
         console.log(totalProductPrices);
         total.setAttribute("class", "total")
-        total.innerHTML = `<span class="pro_name">Total</span> <span class="price">Dkk ${totalProductPrices} </span>`
+        total.innerHTML = `<span class="pro_name">Total</span> <span class="price">${totalProductPrices}</span>`
         productList.insertAdjacentElement('afterEnd', total)
 
     }
 
     renderProducts() {
-        console.log(this.products)
-        this.products.forEach(product => {
-            const productLi = document.createElement('li');
-            productLi.innerHTML = `<span class="pro_name">${product.name}</span> <span class="price">DKK ${product.price}</span>`
-            ulList.setAttribute("class", "productUl")
-            ulList.appendChild(productLi)
-            productList.appendChild(ulList);
+        currencyValue = currency.options[currency.selectedIndex].text;
 
-        })
+        ulList.innerHTML = "";
+        if (this.searchValue == "") {
+            this.products.forEach(product => {
+                console.log(`render products ${currencyValue}`);
+                const productLi = document.createElement('li');
+                productLi.innerHTML = `<span class="pro_name">${product.name}</span> <span class="price">${product.convertToCurrency(currencyValue)}</span>`
+                ulList.setAttribute("class", "productUl")
+                ulList.appendChild(productLi)
+                productList.appendChild(ulList);
+                this.getTotal(this.products);
+            })
+        } else {
+            const filteredProducts = this.searchProduct(this.searchValue)
+            filteredProducts.forEach(product => {
+                console.log(`render products ${currencyValue}`);
+                const productLi = document.createElement('li');
+                productLi.innerHTML = `<span class="pro_name">${product.name}</span> <span class="price">${product.convertToCurrency(currencyValue)}</span>`
+                ulList.setAttribute("class", "productUl")
+                ulList.appendChild(productLi)
+                productList.appendChild(ulList);
+                this.getTotal(filteredProducts);
+            })
+
+        }
+
     }
 
     getUser() {
@@ -82,21 +101,19 @@ class ShoppingCart {
 
 searchbtn.addEventListener("click", findItemFromSearchBar)
 function findItemFromSearchBar() {
-    ulList.innerHTML = "";
-    total.innerText = "";
-    shoppingCart.searchProduct(searchItem.value)
+    shoppingCart.searchValue = searchItem.value;
+    shoppingCart.renderProducts();
 }
-
-currency.addEventListener('change', () => {
-    let currencyValue = currency.options[currency.selectedIndex].text;
-
+currency.addEventListener('change', getCurrency)
+function getCurrency() {
+    currencyValue = currency.options[currency.selectedIndex].text;
+    console.log(currencyValue)
     if (currencyValue === "USD" || currencyValue === "EUR" || currencyValue === "DKK") {
-        shoppingCart.products.forEach(product => {
-            product.convertToCurrency(currencyValue)
-            console.log(product)
-        });
+        shoppingCart.renderProducts();
+        //shoppingCart.getTotal();
+
     }
-})
+}
 
 const shoppingCart = new ShoppingCart();
 const flatscreen = new Product("Flat-screen", 5000);
@@ -118,10 +135,9 @@ shoppingCart.addProduct(coffeeMachine);
 console.log(shoppingCart);
 
 shoppingCart.removeProduct(microwave);
-shoppingCart.getTotal();
 shoppingCart.getUser();
 
-shoppingCart.renderProducts();
 console.log(shoppingCart.products)
 
-
+shoppingCart.renderProducts();
+//getCurrency();
