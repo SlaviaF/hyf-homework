@@ -1,0 +1,72 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-size:0.8em;
+}
+header{
+    padding-bottom: 1em;
+    padding-left:0.5em;
+}
+.head_Nav{
+    display: flex;
+    justify-content:space-between;
+    padding-left:0.5em;
+    padding:2em;
+    background-color: khaki;
+}
+#searchItem{
+    width:20em;
+    margin:2em;
+}
+.navUl{
+    display:flex;
+    list-style-type: none;
+
+}
+
+.navUl li{
+padding: 0 0.9em 0 0.9em;
+
+}
+
+.navUl li a{
+    text-decoration: none;
+}
+.pro_name{
+display:inline-block;
+color:rgb(56, 52, 52);
+width: 18em;
+font-size: 1em;
+font-weight:bold;
+
+}
+
+
+.total{
+font-weight: bold;
+color:darkslategrey;
+padding:2em;
+}
+
+.productUl{
+/*color:grey;*/
+list-style-type: none;
+
+}
+
+.productUl>*{
+    padding:2em;
+}
+.display-container{
+    position:relative;
+ 
+}
+#curr_display{
+    position:absolute;
+    left:30em;
+    top:2em;
+}
