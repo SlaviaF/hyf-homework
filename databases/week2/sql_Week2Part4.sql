@@ -4,25 +4,26 @@ USE company;
 
 CREATE TABLE employees(
 id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-first_name VARCHAR(45) NOT NULL,
-last_name VARCHAR(45)NOT NULL,
+first_name VARCHAR(255) NOT NULL,
+last_name VARCHAR(255)NOT NULL,
 age INT(10),
-email VARCHAR(45) NOT NULL UNIQUE
+email VARCHAR(45) NOT NULL UNIQUE,
+department_id INT UNSIGNED,
+performance_id INT UNSIGNED,
+CONSTRAINT fk_performance_id  FOREIGN KEY (performance_id) REFERENCES performance (id) ON DELETE CASCADE ON UPDATE CASCADE
+CONSTRAINT fk_department_id  FOREIGN KEY (department_id) REFERENCES department (id) ON DELETE CASCADE ON UPDATE CASCADE
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE department(
 id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-name VARCHAR(45),
-employee_id INT UNSIGNED,
-CONSTRAINT fk_employee_id  FOREIGN KEY (employee_id) REFERENCES employees (id) ON DELETE CASCADE ON UPDATE CASCADE
+name VARCHAR(255),
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE performance_rating(
 id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 rating INT(10),
 performance_name VARCHAR(45),
-employee_id INT UNSIGNED,
-CONSTRAINT fk_performance_employee_id  FOREIGN KEY (employee_id) REFERENCES employees (id) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 

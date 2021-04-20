@@ -3,7 +3,7 @@
 USE hyf_lesson2;
 -- Add a task with these attributes: title, description, created, updated, due_date, status_id, user_id
 INSERT INTO task
-VALUES (36, 'Pick-up kids', 'Get the kids from schools', '2020-09-06 03:16:47', '2020-10-10 16:56:58', null, 2);
+VALUES ('Pick-up kids', 'Get the kids from schools', '2020-09-06 03:16:47', '2020-10-10 16:56:58', null, 2);
 
 SELECT *
 FROM task
