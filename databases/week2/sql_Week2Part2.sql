@@ -1,0 +1,34 @@
+-- HYF Week2 Part 2
+
+CREATE DATABASE hyf_school;
+
+USE hyf_school;
+
+CREATE TABLE class(
+id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+name VARCHAR(255) NOT NULL,
+begin_date DATETIME NOT NULL,
+end_date DATETIME NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE student(
+id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+name VARCHAR(255) NOT NULL,
+email VARCHAR(255) NOT NULL,
+phone INT(10) UNSIGNED NOT NULL,
+class_id INT(10) UNSIGNED NOT NULL,
+CONSTRAINT fk_class FOREIGN KEY(class_id) REFERENCES class(id) ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE INDEX student_name ON student (name);
+
+SHOW INDEX FROM student;
+
+ALTER TABLE class
+ADD column status ENUM('not-started', 'ongoing', 'finished') NOT NULL;
+
+DESCRIBE class;
+
+
+
+
