@@ -105,6 +105,7 @@ UPDATE meal
 SET meal.price=110.5
 WHERE id=2;
 
+
 -- Delete a reservation with any id, fx 1
 DELETE 
 FROM meal
@@ -207,10 +208,6 @@ SELECT meal.title, DAY(reservation.created_date) AS created_on
 FROM meal
 INNER JOIN reservation ON meal.id = reservation.meal_id
 HAVING created_on > 14 && created_on <20;
-
--- SELECT column_name(s)
--- FROM table_name
--- WHERE column_name BETWEEN value1 AND value2;
 
 -- Get the meals that have good reviews
 SELECT meal.title, review.stars
