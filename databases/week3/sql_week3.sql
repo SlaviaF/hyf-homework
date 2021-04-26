@@ -1,4 +1,6 @@
+drop database meal_sharing;
 CREATE DATABASE meal_sharing;
+
 USE meal_sharing;
 
 CREATE TABLE meal(
@@ -7,36 +9,33 @@ CREATE TABLE meal(
  description TEXT,
  location VARCHAR(255) NOT NULL,
  event_day DATETIME NOT NULL,
- max_reservations INT NOT NULL,
- price DECIMAL,
+ max_reservations INT UNSIGNED NOT NULL,
+ price DECIMAL(6,2) NOT NULL,
  created_date DATETIME DEFAULT NOW()
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE reservation(
  id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
- number_of_guests INT NOT NULL,
+ number_of_guests INT UNSIGNED NULL DEFAULT NULL,
  created_date DATETIME DEFAULT NOW(),
  contact_phonenumber INT NULL DEFAULT NULL,
  contact_name varchar(255) NOT NULL,
- contact_email varchar(255) NOT NULL,
-  meal_id INT UNSIGNED,
-CONSTRAINT fk_meal FOREIGN KEY (meal_id) REFERENCES meal(id) ON DELETE CASCADE ON UPDATE CASCADE
+ contact_email varchar(255) UNIQUE NOT NULL,
+  meal_id INT UNSIGNED NOT NULL,
+CONSTRAINT fk_reservation_meal FOREIGN KEY (meal_id) REFERENCES meal(id) ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE review(
  id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
  title VARCHAR(255),
  description TEXT,
- meal_id INT UNSIGNED,
+ meal_id INT UNSIGNED NOT NULL,
  stars INT UNSIGNED,
- CHECK(stars<6),
  created_date DATETIME DEFAULT NOW(),
- CONSTRAINT fk_review_meal FOREIGN KEY (meal_id) REFERENCES meal(id) ON DELETE CASCADE ON UPDATE CASCADE
+ CONSTRAINT fk_review_meal FOREIGN KEY (meal_id) REFERENCES meal(id) ON UPDATE CASCADE ON DELETE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-
-
-INSERT INTO meal (title, description, location, event_day, max_reservations,price, created_date)
+ INSERT INTO meal (title, description, location, event_day, max_reservations,price, created_date)
 VALUES
 ('Chicken Korma', 'Chicken Korma is a delicious gravy usually made with onions, spices, nuts, yogurt, seeds, coconut and chicken. It originated in the Indian subcontinent during the Mughal Era & later became immensely popular across the world.', 'Copenhagen', '2021-07-10 12:30:00', 20, 150, now());
 
@@ -77,15 +76,7 @@ INSERT INTO reservation(number_of_guests, created_date, contact_phonenumber, con
  ('Simply Wow', 'Me and my friends had a lovely expereince here. Food was simply delish', 6, 5), 
  ('Lovely vegetarian ', 'It was delicious ', 4, 4);
  
- -- added unique constraint on email as missed out earlier
-  ALTER TABLE reservation 
-ADD CONSTRAINT UNIQUE(contact_email);
-
--- altered the datatype of price
-ALTER TABLE meal
-MODIFY COLUMN price DECIMAL(5,2);
-
--- Queries for Meal
+ -- Queries for Meal
 -- Get all meals
 SELECT meal.title
 FROM meal;
@@ -105,7 +96,7 @@ UPDATE meal
 SET meal.price=110.5
 WHERE id=2;
 
-
+select * from meal;
 -- Delete a reservation with any id, fx 1
 DELETE 
 FROM meal
@@ -119,17 +110,17 @@ FROM reservation;
 -- Add a new reservation
 INSERT INTO reservation(number_of_guests, created_date, contact_phonenumber, contact_name, contact_email, meal_id)
  values (5, now(), '9185421','Harshada Patel', 'hpatel0@spotify.com', 7);
- 
+
  -- Get a reservation with any id, fx 1
  SELECT contact_name AS name
  FROM reservation
  WHERE id =5;
  
- -- Update a reservation with any id, fx 1. Update any attribute fx the title or multiple attributes
+  -- Update a reservation with any id, fx 1. Update any attribute fx the title or multiple attributes
  UPDATE reservation
  SET number_of_guests =3, meal_id=10
  WHERE id=6;
- 
+
 -- Delete a reservation with any id, fx 1
 DELETE 
 FROM reservation
@@ -152,7 +143,7 @@ WHERE id=6;
 DELETE 
 FROM review
 WHERE id=4;
- 
+
  -- Additional queries
  
  INSERT INTO meal (title, description, location, event_day, max_reservations,price, created_date)
@@ -168,13 +159,12 @@ INSERT INTO reservation(number_of_guests, created_date, contact_phonenumber, con
  (4, now(), '89152968','Guruwain Kumar', 'gKumar@phoca.cz', 16),
  (3, now(), '67456795','Kyle Bessler',  'kbessler@chronoengine.com',17),
  (2, now(), '34329630','Turdy Ray',  'tRay@harvard.edu', 18);
- 
+
+
 INSERT INTO reservation(number_of_guests, created_date, contact_phonenumber, contact_name, contact_email, meal_id)
  VALUES (9, now(), '91358597','Biju Sambhar', 'bsambhar@spotify.com', 17);
  
-
-
- INSERT INTO review(title, description, meal_id, stars)
+  INSERT INTO review(title, description, meal_id, stars)
  VALUES ('Excellent food', 'What a lovely homely expereince. It was food for my soul ', 15, 5), 
  ('Will do it again', 'That was some lovley food: i recommend everone to try it out ', 16, 4), 
  ('Yummy food', 'It was good, but not the best ', 17, 3),
@@ -190,8 +180,11 @@ SELECT meal.id, meal.title, meal.max_reservations AS max_guests, SUM(reservation
 FROM meal
 INNER JOIN reservation ON meal.id = reservation.meal_id
 GROUP BY meal.title
-HAVING total_reserved < max_guests;
+HAVING max_guests > total_reserved OR total_reserved = NULL;
 
+select *
+from meal
+INNER JOIN reservation ON meal.id = reservation.meal_id;
 -- Get meals that partially match a title. Rød grød med will match the meal with the title Rød grød med fløde
 
 SELECT title
@@ -204,34 +197,29 @@ FROM meal
 LIMIT 5;
 
 -- Get meals that has been created between two dates
-SELECT meal.title, DAY(reservation.created_date) AS created_on
-FROM meal
-INNER JOIN reservation ON meal.id = reservation.meal_id
-HAVING created_on > 14 && created_on <20;
+select id, title, created_date
+from meal
+where created_date between '2021-04-23 11:30:00' AND '2021-04-26 09:56:19';
+
+select *
+from meal;
 
 -- Get the meals that have good reviews
 SELECT meal.title, review.stars
 FROM meal
 INNER JOIN review ON meal.id = review.meal_id
-WHERE stars > 4;
+WHERE stars > 3;
 
 -- Get reservations for a specific meal sorted by created_date
-SELECT meal.title AS name, reservation.created_date AS created_on
-FROM meal 
-INNER JOIN reservation ON meal.id = reservation.meal_id
-ORDER BY created_on DESC;
+SELECT meal_id, reservation.created_date AS created_on
+FROM reservation
+where meal_id=3;
+
+
 
 -- Sort all meals by average number of stars in the reviews
 SELECT meal.title, AVG(review.stars)
 FROM meal 
 INNER JOIN review ON meal.id = review.meal_id
-GROUP BY meal.title
+GROUP BY meal.id
 ORDER BY review.stars DESC;
-
-
-
-
-
-
-
-
