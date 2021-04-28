@@ -1,4 +1,3 @@
-drop database meal_sharing;
 CREATE DATABASE meal_sharing;
 
 USE meal_sharing;
@@ -178,9 +177,9 @@ WHERE price<90;
 -- Get meals that still has available reservations
 SELECT meal.id, meal.title, meal.max_reservations AS max_guests, SUM(reservation.number_of_guests) AS total_reserved
 FROM meal
-INNER JOIN reservation ON meal.id = reservation.meal_id
+LEFT JOIN reservation ON meal.id = reservation.meal_id
 GROUP BY meal.title
-HAVING max_guests > total_reserved OR total_reserved = NULL;
+HAVING max_guests > total_reserved OR isnull(total_reserved);
 
 select *
 from meal
@@ -215,11 +214,10 @@ SELECT meal_id, reservation.created_date AS created_on
 FROM reservation
 where meal_id=3;
 
-
-
 -- Sort all meals by average number of stars in the reviews
 SELECT meal.title, AVG(review.stars)
 FROM meal 
-INNER JOIN review ON meal.id = review.meal_id
+LEFT JOIN review ON meal.id = review.meal_id
 GROUP BY meal.id
-ORDER BY review.stars DESC;
+ORDER BY AVG(review.stars) DESC;
+
