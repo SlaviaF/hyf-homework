@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "title": "Indian food in the summer",
+        "maxNumberOfGuests": 5,
+        "description": "A nice night out eating delicious indian food",
+        "createdAt": "2019/12/7 14:34",
+        "price": 67
+    },
+    {
+        "id": 2,
+        "title": "Mexican food to cherish",
+        "maxNumberOfGuests": 7,
+        "description": "Delicious mexican food",
+        "createdAt": "2019/12/9 18:24",
+        "price": 53
+    },
+    {
+        "id": 3,
+        "title": "Iranian food to cherish",
+        "maxNumberOfGuests": 10,
+        "description": "Delicious Irani food",
+        "createdAt": "2019/12/10 17:20",
+        "price": 59
+    }
+]
