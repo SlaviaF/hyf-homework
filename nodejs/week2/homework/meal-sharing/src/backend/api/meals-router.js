@@ -1,3 +1,4 @@
+const { request, response } = require("express");
 const express = require("express");
 const router = express.Router();
 
@@ -21,6 +22,15 @@ router.get("/:id", async (request, response) => {
 
 router.get("/", async (request, response) => {
   try {
+    const validParams = ["maxPrice", "createdAfter", "title", "limit"];
+    const requestParams = Object.keys(request.query)
+    const isParamValid = param => validParams.includes(param)
+
+    if (!requestParams.every(isParamValid)) {
+      response.status(400).send("The query you requested does not exist")
+      return;
+    }
+
     const mealTitle = request.query.title;
 
     if ('maxPrice' in request.query) {
@@ -30,6 +40,7 @@ router.get("/", async (request, response) => {
         return
       }
       const getMealsWithMaxPrice = meals.filter(meal => meal.price <= maxPrice)
+      console.log(`check it:${(Object.keys(request.query))}`)
       response.send(getMealsWithMaxPrice)
     }
 
@@ -72,6 +83,11 @@ router.get("/", async (request, response) => {
 
 });
 
+function validateParamter() {
+  if (Object.keys(request.query) != ("maxPrice" || "createdAfter" || "title" || "limit")) {
+    return response.status(404).send("The query you requested does not exist")
+  }
+}
 
 
 
