@@ -24,7 +24,7 @@ router.get("/:id", async (request, response) => {
     }
 
     catch (error) {
-        console.log(error)
+        response.status(500).send({ error: "Internal Server Error." });
     }
 })
 module.exports = router;

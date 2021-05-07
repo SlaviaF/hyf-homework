@@ -21,7 +21,7 @@ router.get("/:id", async (request, response) => {
             response.status(404).send(`Sorry. The reviews with id: ${reviewsId} doesn't exist`);
         }
     } catch (error) {
-        console.log(error)
+        response.status(500).send({ error: "Internal Server Error." });
     }
 
 })
