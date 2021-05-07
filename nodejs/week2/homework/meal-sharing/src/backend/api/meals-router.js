@@ -79,8 +79,6 @@ router.get("/", async (request, response) => {
     console.log(error.message)
   }
 
-
-
 });
 
 function validateParamter() {
@@ -88,10 +86,6 @@ function validateParamter() {
     return response.status(404).send("The query you requested does not exist")
   }
 }
-
-
-
-
 
 
 module.exports = router;

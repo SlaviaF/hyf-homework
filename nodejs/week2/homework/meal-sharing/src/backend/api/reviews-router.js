@@ -4,11 +4,7 @@ const router = express.Router();
 const reviews = require("./../data/reviews.json");
 
 router.get("/", async (request, response) => {
-    try {
-        response.send(reviews);
-    } catch (error) {
-        throw error;
-    }
+    response.send(reviews);
 });
 router.get("/:id", async (request, response) => {
     try {

@@ -3,11 +3,8 @@ const router = express.Router();
 
 const reservations = require("./../data/reservations.json");
 router.get("/", async (request, response) => {
-    try {
-        response.send(reservations);
-    } catch (error) {
-        throw error;
-    }
+
+    response.send(reservations);
 });
 
 router.get("/:id", async (request, response) => {
@@ -25,8 +22,6 @@ router.get("/:id", async (request, response) => {
             response.status(404).send(`Sorry. The reservations with id: ${reservationsId} doesn't exist`);
         }
     }
-
-
 
     catch (error) {
         console.log(error)
