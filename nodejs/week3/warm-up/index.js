@@ -1,3 +1,4 @@
+
 const express = require("express");
 const app = express();
 
@@ -11,68 +12,134 @@ app.use(express.json());
 app.get("/", (req, res) => res.send("nodejs week3 homework"));
 
 app.get("/calculator/multiply", (req, res) => {
-    if ("firstParam" in req.query && "secondParam" in req.query) {
-        const firstParam = [...req.query.firstParam];
-        const secondParam = [...req.query.secondParam]
-        const firstParaMult = firstParam.reduce((acc, currentValue) => parseFloat(acc) * parseFloat(currentValue));
-        const secondParamMult = secondParam.reduce((acc, currentValue) => parseFloat(acc) * parseFloat(currentValue));
-        const multiplication = parseFloat(firstParaMult) * parseFloat(secondParamMult)
-        res.send(`${multiplication}`)
-
-    }
+    try{
+        const multiplication= Object.values(req.query).flat().map((parameter)=>parseInt(parameter)).reduce((acc, val)=>acc*val)
+       
+           if (isNaN(multiplication)){
+               res.status(404).send("Parameters should be interger value")
+           }
+           else {
+               res.send(`${multiplication}`)
+           }
+       }
+           catch(error){
+               res.status(500).send({error:"Internal server error"})
+       }
 })
 
 app.get("/calculator/add", (req, res) => {
-    if ("firstParam" in req.query && "secondParam" in req.query) {
-        const firstParam = [...req.query.firstParam];
-        const secondParam = [...req.query.secondParam]
-        const firstParaAdd = firstParam.reduce((acc, currentValue) => parseFloat(acc) + parseFloat(currentValue));
-        const secondParamAdd = secondParam.reduce((acc, currentValue) => parseFloat(acc) + parseFloat(currentValue));
-        const addition = parseFloat(firstParaAdd) + parseFloat(secondParamAdd)
-        res.send(`${addition}`)
-    }
+    try{
+        const addition= Object.values(req.query).flat().map((parameter)=>parseInt(parameter)).reduce((acc, val)=>acc+val)
+       
+           if (isNaN(addition)){
+               res.status(404).send("Parameters should be interger value")
+           }
+           else {
+               res.send(`${addition}`)
+           }
+       }
+           catch(error){
+               res.status(500).send({error:"Internal server error"})
+       }
 })
 
 app.get("/calculator/subtract", (req, res) => {
-    if ("firstParam" in req.query && "secondParam" in req.query) {
-        console.log(req.query)
-        const firstParam = [...req.query.firstParam];
-        const secondParam = [...req.query.secondParam]
-        const firstParasub = firstParam.reduce((acc, currentValue) => parseFloat(acc) + parseFloat(currentValue));
-        const secondParamsub = secondParam.reduce((acc, currentValue) => parseFloat(acc) + parseFloat(currentValue));
-        const subtraction = parseFloat(firstParasub) - parseFloat(secondParamsub)
-        res.send(`${subtraction}`)
-    }
+    try{
+        const subtract= Object.values(req.query).flat().map((parameter)=>parseInt(parameter)).reduce((acc, val)=>acc-val)
+       
+           if (isNaN(subtract)){
+               res.status(404).send("Parameters should be interger value")
+           }
+           else {
+               res.send(`${subtract}`)
+           }
+       }
+           catch(error){
+               res.status(500).send({error:"Internal server error"})
+       }
 })
 
 app.get("/calculator/division", (req, res) => {
-    if ("firstParam" in req.query && "secondParam" in req.query) {
-        console.log(req.query)
-        const firstParam = [...req.query.firstParam];
-        const secondParam = [...req.query.secondParam]
-        const firstParaDiv = firstParam.reduce((acc, currentValue) => parseFloat(acc) + parseFloat(currentValue));
-        const secondParamDiv = secondParam.reduce((acc, currentValue) => parseFloat(acc) + parseFloat(currentValue));
-        const division = parseFloat(firstParaDiv) / parseFloat(secondParamDiv)
-        res.send(`${division}`)
-    }
+    try{
+        const division= Object.values(req.query).flat().map((parameter)=>parseInt(parameter)).reduce((acc, val)=>acc/val)
+       
+           if (isNaN(division)){
+               res.status(404).send("Parameters should be interger value")
+           }
+           else {
+               res.send(`${division}`)
+           }
+       }
+           catch(error){
+               res.status(500).send({error:"Internal server error"})
+       }
 })
 
+app.get("/", (req, res) => res.send("nodejs week3 homework"));
 
 app.post("/calculator/multiply", (req, res) => {
-    console.log(req.body.firstParam);
-    const firstParam = parseFloat(req.body.firstParam)
-    const secondParam = parseFloat(req.body.secondParam);
-    const multiplication = parseFloat(firstParam * secondParam);
-    res.send(`multiplication: ${multiplication}`)
+    try{
+        const multiplication= Object.values(req.body).flat().map((parameter)=>parseInt(parameter)).reduce((acc, val)=>acc*val)
+       
+           if (isNaN(multiplication)){
+               res.status(404).send("Parameters should be interger value")
+           }
+           else {
+               res.send(`${multiplication}`)
+           }
+       }
+           catch(error){
+               res.status(500).send({error:"Internal server error"})
+       }
+})
 
+app.post("/calculator/add", (req, res) => {
+    try{
+        const addition= Object.values(req.body).flat().map((parameter)=>parseInt(parameter)).reduce((acc, val)=>acc+val)
+       
+           if (isNaN(addition)){
+               res.status(404).send("Parameters should be interger value")
+           }
+           else {
+               res.send(`${addition}`)
+           }
+       }
+           catch(error){
+               res.status(500).send({error:"Internal server error"})
+       }
+})
+
+app.post("/calculator/subtract", (req, res) => {
+    try{
+        const subtract= Object.values(req.body).flat().map((parameter)=>parseInt(parameter)).reduce((acc, val)=>acc-val)
+       
+           if (isNaN(subtract)){
+               res.status(404).send("Parameters should be interger value")
+           }
+           else {
+               res.send(`${subtract}`)
+           }
+       }
+           catch(error){
+               res.status(500).send({error:"Internal server error"})
+       }
 })
 
 app.post("/calculator/division", (req, res) => {
-    console.log(req.body.firstParam);
-    const firstParam = parseFloat(req.body.firstParam)
-    const secondParam = parseFloat(req.body.secondParam);
-    const division = parseFloat(firstParam / secondParam);
-    res.send(`division: ${division}`)
-
+    try{
+        const division= Object.values(req.body).flat().map((parameter)=>parseInt(parameter)).reduce((acc, val)=>acc/val)
+       
+           if (isNaN(division)){
+               res.status(404).send("Parameters should be interger value")
+           }
+           else {
+               res.send(`${division}`)
+           }
+       }
+           catch(error){
+               res.status(500).send({error:"Internal server error"})
+       }
 })
+
+
 app.listen(3000, () => console.log(`Calculator:listening on port 3000`));
