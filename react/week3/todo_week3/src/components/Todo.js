@@ -60,7 +60,7 @@ todos.forEach(todo =>{
 export default Todo
 
 Todo.propTypes = {
-    todos : PropTypes.arrayOf(PropTypes.object(PropTypes.string)),
+    todos : PropTypes.arrayOf(PropTypes.object),
     todo:PropTypes.object,
     onDelete:PropTypes.func,
     setInputValue:PropTypes.func
