@@ -1,7 +1,7 @@
 import React from 'react'
 const Border = ({children}) => {
     return (
-        <div style={{border:"1px solid black"}}>
+        <div className="border-design ">
            {children}
         </div>
     )

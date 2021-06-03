@@ -37,11 +37,18 @@ const [dateValue, setDateValue]= useState(null)
  }, [])
 
  const addTodoOnclick=()=>{
+     if (inputValue===" "){
+         alert("Please enter your todo")
+     }
+     if (dateValue===null){
+         alert("please enter a deadline")
+     }
     setTodos((previousTodos)=>[...previousTodos, {
     id : new Date().getMilliseconds(), 
     description:inputValue,
     deadline:dateValue.toISOString().slice(0, 10),
 } ])
+    setInputValue(" ")
 }
 if (loading){
    return (
@@ -63,7 +70,7 @@ const onDelete=(id)=>{
 
     return (
     <>
-       <div>
+       <div className="container">
         <form onSubmit={onSubmit}>
             <label htmlFor="desc">
                 Todo description:
@@ -80,24 +87,24 @@ const onDelete=(id)=>{
             onChange={date=>setDateValue(date)}
             dateFormat='yyyy/MM/dd'
             minDate ={new Date()}
+            isClearable
             
             />
         </form>
 
         <div>
         </div>
-        <button onClick={addTodoOnclick}>Add todo</button> 
-
+        <button className="add-btn"onClick={addTodoOnclick}>Add todo</button> 
+        <div className="todo-box">
         <ul>
-        
             {todos.map(todo=><Todo key = {todo.id} 
             todo={todo} 
             todos={todos}
             onDelete={onDelete} 
             setInputValue={setInputValue}
             />)}
-        
         </ul>
+        </div>
     </div>
     </>
     )

@@ -29,13 +29,13 @@ todos.forEach(todo =>{
     
 
     return (
-        <div>  
+        <div className="todo-container">  
         <span>  
             <Border>
             {
                 isEditMode? <>
-                    <li style= {{ 'textDecoration': checked ? 'line-through' : 'none' }}> <input type="text" value={description} onChange={(e)=>setDescription(e.target.value)} /> {todo.deadline}  
-                <input  type="checkbox" name="checkbox" checked={checked} onChange={()=>{setChecked(!checked)}}/>  
+                    <li className ="todo-style" style= {{ 'textDecoration': checked ? 'line-through' : 'none' }}> <input type="text" value={description} onChange={(e)=>setDescription(e.target.value)} /> {todo.deadline}  
+                <input className="checkbox-style" type="checkbox" name="checkbox" checked={checked} onChange={()=>{setChecked(!checked)}}/>  
                 <button onClick={()=>onDelete(todo.id)}>Delete</button>
                 <button onClick={()=>onUpdate(todo.id)}>Update</button>
                 </li>
@@ -43,8 +43,8 @@ todos.forEach(todo =>{
 
             :
                 
-                <li style= {{ 'textDecoration': checked ? 'line-through' : 'none' }}> {todo.description} | {todo.deadline}  
-              <input  type="checkbox" name="checkbox" checked={checked} onChange={()=>{setChecked(!checked)}} />  
+                <li className="todo-style" style= {{ 'textDecoration': checked ? 'line-through' : 'none' }}> {todo.description} | {todo.deadline}  
+              <input className="checkbox-style" type="checkbox" name="checkbox" checked={checked} onChange={()=>{setChecked(!checked)}} />  
                 <button onClick={()=>onDelete(todo.id)}>Delete</button>
                 <button onClick={onEdit}>Edit</button>
                 </li>

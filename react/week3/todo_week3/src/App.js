@@ -11,10 +11,12 @@ const[timer, setTimer]= useState(0)
    }, [timer])
   
   return (
+    <div className="main_page">
     <div className="App">
-      <h1>Todolist</h1>
-      <h3>You have used {timer} seconds on this website</h3>
+      <h1 className="heading">Todo App</h1>
+      <h3 className="timer">You have used {timer} seconds on this website</h3>
       <Todos />
+    </div>
     </div>
   );
 }
