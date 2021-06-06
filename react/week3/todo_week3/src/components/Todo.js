@@ -16,12 +16,13 @@ const onEdit=()=>{
 
 const onUpdate=(id)=>{
     
-todos.forEach(todo =>{
+const getDescription=todos.map(todo =>{
     if(todo.id===id) {
-    return todo.description=description
+    return todo.description = description
     }
+    return description
 })
-    setInputValue(description)
+    setInputValue(getDescription)
     setIsEditMode(false)
     setInputValue(" ")
 
@@ -34,7 +35,7 @@ todos.forEach(todo =>{
             <Border>
             {
                 isEditMode? <>
-                    <li className ="todo-style" style= {{ 'textDecoration': checked ? 'line-through' : 'none' }}> <input type="text" value={description} onChange={(e)=>setDescription(e.target.value)} /> {todo.deadline}  
+                    <li style= {{ 'textDecoration': checked ? 'line-through' : 'none' }}> <input type="text" value={description} onChange={(e)=>setDescription(e.target.value)} /> {todo.deadline}  
                 <input className="checkbox-style" type="checkbox" name="checkbox" checked={checked} onChange={()=>{setChecked(!checked)}}/>  
                 <button onClick={()=>onDelete(todo.id)}>Delete</button>
                 <button onClick={()=>onUpdate(todo.id)}>Update</button>
