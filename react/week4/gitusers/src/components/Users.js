@@ -10,7 +10,7 @@ const Users = () => {
     const [error, setError] = useState(null)
     
    const fetchGithubApi = async(inputValue)=>{
-    const API_URL = `https://api.github.com/search/users?q=${inputValue}+in:user`
+    const API_URL = `https://api.github.com/search/users?q=${inputValue}`
 
         try{
             setLoading(true)
