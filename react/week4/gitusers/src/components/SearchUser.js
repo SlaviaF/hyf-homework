@@ -11,7 +11,6 @@ const SearchUser = () => {
                                                                 </div>
                                                                 )
                                                          })            
-                                                          
     return (
         <>
             {!filterUsers.length?<div className ="user-info center">No results found</div>:filterUsers}

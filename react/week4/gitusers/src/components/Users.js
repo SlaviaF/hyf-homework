@@ -36,9 +36,6 @@ const Users = () => {
         fetchGithubApi(); 
     }, [])
 
-    console.log({users})
- 
-
     return (
         <>
         <div>
