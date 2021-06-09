@@ -23,7 +23,6 @@ const Users = () => {
             const githubUsers = githubData.items
             setUsers(githubUsers)
             setLoading(false)
-
           }
         catch(error){
             setError(`Error fetching: ${error.message}`)
