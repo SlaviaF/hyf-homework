@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import Border from './Border'
 import PropTypes from 'prop-types'
 
-const Todo = ({todo, todos, onDelete, setInputValue}) => {
+const Todo = ({todo, todos, setTodos, onDelete, setInputValue}) => {
 const [checked, setChecked]=useState(false)
 const [isEditMode, setIsEditMode]=useState(false)
 const [description, setDescription]=useState(todo.description)
@@ -16,13 +16,11 @@ const onEdit=()=>{
 
 const onUpdate=(id)=>{
     
-const getDescription=todos.map(todo =>{
-    if(todo.id===id) {
-    return todo.description = description
-    }
-    return description
-})
-    setInputValue(getDescription)
+    const newTodos = todos.map(todo => {
+        return todo.id === id ? {...todo, description: description} : todo
+    });
+    
+    setTodos(newTodos);
     setIsEditMode(false)
     setInputValue(" ")
 
