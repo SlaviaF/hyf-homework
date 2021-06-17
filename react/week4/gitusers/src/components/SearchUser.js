@@ -13,7 +13,7 @@ const SearchUser = () => {
                                                          })            
     return (
         <>
-            {!filterUsers.length?<div className ="user-info center">No results found</div>:filterUsers}
+          {!filterUsers.length?<div className ="user-info center">No results found</div>:filterUsers}
         </>
     )
 }

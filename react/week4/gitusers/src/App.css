@@ -1,0 +1,62 @@
+
+.App {
+  text-align: center;
+}
+
+.header{
+  font-family: 'Dancing Script', cursive;
+  font-weight:700;
+  font-size:3rem;
+}
+
+input[type=text] {
+
+  padding: 12px 30px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 2px solid rgb(192, 107, 107);
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 18px;
+
+  
+}
+.input-container{
+  position:relative;
+}
+.search-icon{
+  position:absolute;
+  right: 57%;
+  bottom:30%;
+  padding-right:2px;
+}
+
+.user-info {
+  border:1px solid rgb(212, 207, 207);
+  border-radius: 10px;
+  padding:0.5em;
+  margin-bottom:2em;
+  font-size: 1.2em;
+  font-family:sans-serif;
+  width:22%;
+  margin-right: 10px;
+}
+.container{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width:1200px;
+  padding:2em;
+  margin:80px auto;
+  text-align: center;
+
+}
+
+img{
+  width:100px;
+}
+
+.results{
+  text-align: center;
+}
+
