@@ -1,5 +1,7 @@
 Tomatoes
 Carrots
-Pumpkin
+Pumpkin Squash
 Cucumber
 French Beans
+Cauliflower
+Broccoli
