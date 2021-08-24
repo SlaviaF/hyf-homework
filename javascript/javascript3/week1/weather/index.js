@@ -31,7 +31,7 @@ function getCityWeather() {
     })
     .then((weatherData) => {
       renderWeatherStatus(weatherData);
-      inputCity.value="";
+      inputCity.value = "";
       infoBox.style.visibility = "visible";
       localStorage.setItem("userLocation", renderWeatherStatus(weatherData));
     })
@@ -119,3 +119,5 @@ function renderWeatherStatus(weatherData) {
   let lng = weatherData.coord.lon;
   displayMap(lat, lng);
 }
+
+
